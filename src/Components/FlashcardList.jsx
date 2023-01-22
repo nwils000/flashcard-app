@@ -23,17 +23,22 @@ export default function FlashcardList() {
   ]);
   return (
     <>
-      <div>
-        <form>
-          <div>
-            <label htmlFor="category">Category</label>
-            <select id="category">
-              <option value="cateogry title">categories</option>
+      <div className="form-container">
+        <form className="header">
+          <div className="form-group">
+            <label className="label" htmlFor="category">
+              Category
+            </label>
+            <select className="input input-category" id="category">
+              <option value="cateogry title">Categories</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="amount">Number of Questions</label>
+          <div className="form-group">
+            <label className="label" htmlFor="amount">
+              Number of Questions
+            </label>
             <input
+              className="input input-number-of-questions"
               type="number"
               id="amount"
               min="1"
@@ -43,8 +48,8 @@ export default function FlashcardList() {
             />
           </div>
         </form>
-        <div>
-          <button>Generate</button>
+        <div className="button-container">
+          <button className="button">Generate</button>
         </div>
       </div>
       <div>
