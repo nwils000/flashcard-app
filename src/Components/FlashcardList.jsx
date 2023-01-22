@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import Flashcard from "./Flashcard";
 
 export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([
     {
+      id: 1,
       question: "What is 2 + 2",
       answer: "4",
       options: ["1", "2", "3", "4"],
     },
     {
+      id: 2,
       question: "Who was the first US president",
       answer: "George Washington",
       options: [
@@ -44,7 +47,11 @@ export default function FlashcardList() {
           <button>Generate</button>
         </div>
       </div>
-      <div>{/* Insert flashcards */}</div>
+      <div>
+        {flashcards.map((flashcard) => {
+          return <Flashcard flashcard={flashcard} key={flashcard.id} />;
+        })}
+      </div>
     </>
   );
 }
