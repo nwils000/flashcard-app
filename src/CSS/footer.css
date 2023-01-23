@@ -1,12 +1,13 @@
 .footer {
   width: 100vw;
-  background-color: #e2513be5;
+  background-color: #e2513bec;
   color: white;
   height: 3.2rem;
   font-size: 1.3rem;
   text-align: center;
   position: relative;
   bottom: 0;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .github__logo {
