@@ -1,26 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Flashcard from "./Flashcard";
+import axios from "axios";
 
 export default function FlashcardList() {
-  const [flashcards, setFlashcards] = useState([
-    {
-      id: 1,
-      question: "What is 2 + 2",
-      answer: "4",
-      options: ["1", "2", "3", "4"],
-    },
-    {
-      id: 2,
-      question: "Who was the first US president",
-      answer: "George Washington",
-      options: [
-        "Paule Revere",
-        "Abraham Lincoln",
-        "Barack Obama",
-        "George Washington",
-      ],
-    },
-  ]);
+  const [flashcards, setFlashcards] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const categoryEl = useRef();
+  const amountEl = useRef();
+
+  useEffect(() => {
+    axios.get("https://opentdb.com/api_category.php").then((res) => {
+      setCategories(res.data.trivia_categories);
+    });
+  });
+
+  function decodeString(str) {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = str;
+    return textArea.value;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    axios
+      .get("https://opentdb.com/api.php", {
+        params: {
+          amount: amountEl.current.value,
+          category: categoryEl.current.value,
+        },
+      })
+      .then((res) => {
+        setFlashcards(
+          res.data.results.map((questionItem, index) => {
+            const answer = decodeString(questionItem.correct_answer);
+            const options = [
+              ...questionItem.incorrect_answers.map((a) => decodeString(a)),
+              answer,
+            ];
+            return {
+              id: `${index}-${Date.now()}`,
+              question: decodeString(questionItem.question),
+              answer: answer,
+              options: options.sort(() => Math.random() - 0.5),
+            };
+          })
+        );
+      });
+  }
+
   return (
     <>
       <div className="form-container">
@@ -29,8 +57,18 @@ export default function FlashcardList() {
             <label className="label" htmlFor="category">
               Category
             </label>
-            <select className="input input-category" id="category">
-              <option value="cateogry title">Categories</option>
+            <select
+              className="input input-category"
+              id="category"
+              ref={categoryEl}
+            >
+              {categories.map((category) => {
+                return (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="form-group">
@@ -45,11 +83,14 @@ export default function FlashcardList() {
               max="99"
               step="1"
               defaultValue={10}
+              ref={amountEl}
             />
           </div>
         </form>
         <div className="button-container">
-          <button className="button">Generate</button>
+          <button className="button" onClick={handleSubmit}>
+            Generate
+          </button>
         </div>
       </div>
       <div>
