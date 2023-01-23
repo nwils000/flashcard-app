@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Flashcard from "./Flashcard";
+import Footer from "./Footer";
 import axios from "axios";
 
 export default function FlashcardList() {
@@ -51,53 +52,56 @@ export default function FlashcardList() {
 
   return (
     <>
-      <div className="form-container">
-        <form className="header">
-          <div className="form-group">
-            <label className="label" htmlFor="category">
-              Category
-            </label>
-            <select
-              className="input input-category"
-              id="category"
-              ref={categoryEl}
-            >
-              {categories.map((category) => {
-                return (
-                  <option value={category.id} key={category.id}>
-                    {category.name}
-                  </option>
-                );
-              })}
-            </select>
+      <div className="flashcard-list__wrapper">
+        <div className="form-container">
+          <form className="header">
+            <div className="form-group">
+              <label className="label" htmlFor="category">
+                Category
+              </label>
+              <select
+                className="input input-category"
+                id="category"
+                ref={categoryEl}
+              >
+                {categories.map((category) => {
+                  return (
+                    <option value={category.id} key={category.id}>
+                      {category.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="label" htmlFor="amount">
+                Number of Questions
+              </label>
+              <input
+                className="input input-number-of-questions"
+                type="number"
+                id="amount"
+                min="1"
+                max="99"
+                step="1"
+                defaultValue={10}
+                ref={amountEl}
+              />
+            </div>
+          </form>
+          <div className="button-container">
+            <button className="button" onClick={handleSubmit}>
+              Generate
+            </button>
           </div>
-          <div className="form-group">
-            <label className="label" htmlFor="amount">
-              Number of Questions
-            </label>
-            <input
-              className="input input-number-of-questions"
-              type="number"
-              id="amount"
-              min="1"
-              max="99"
-              step="1"
-              defaultValue={10}
-              ref={amountEl}
-            />
-          </div>
-        </form>
-        <div className="button-container">
-          <button className="button" onClick={handleSubmit}>
-            Generate
-          </button>
+        </div>
+        <div className="card-grid">
+          {flashcards.map((flashcard) => {
+            return <Flashcard flashcard={flashcard} key={flashcard.id} />;
+          })}
         </div>
       </div>
-      <div className="card-grid">
-        {flashcards.map((flashcard) => {
-          return <Flashcard flashcard={flashcard} key={flashcard.id} />;
-        })}
-      </div>
+      <Footer />
     </>
   );
 }

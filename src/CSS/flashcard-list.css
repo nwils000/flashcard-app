@@ -1,3 +1,7 @@
+.flashcard-list__wrapper {
+  min-height: calc(100vh - 3.2rem);
+}
+
 .form-container {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   align-items: center;
@@ -12,7 +16,6 @@
   margin: 0 15vw 0 15vw;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
-  margin-bottom: 2rem;
 }
 
 .form-group {
@@ -27,6 +30,7 @@
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1rem;
+  margin: 2rem;
 }
 
 .button-container {

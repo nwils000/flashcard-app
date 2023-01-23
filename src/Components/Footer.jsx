@@ -1,0 +1,15 @@
+import React from "react";
+import github from "../Photos/github.png";
+
+export default function Footer() {
+  return (
+    <>
+      <div className="footer">
+        Copyright © 2022
+        <a href="https://github.com/nwils000/flashcard-app">
+          <img className="github__logo" src={github} alt="" />
+        </a>
+      </div>
+    </>
+  );
+}

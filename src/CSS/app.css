@@ -1,6 +1,7 @@
 @import-normalize;
-@import "flashcard.css";
+@import "flashcard";
 @import "flashcard-list";
+@import "footer";
 
 *,
 *::before,
