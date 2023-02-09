@@ -84,3 +84,31 @@
 .input-number-of-questions {
   width: 5.5rem;
 }
+
+@media screen and (max-width: 896px) {
+  .input-category {
+    width: 93%;
+  }
+}
+
+@media screen and (max-width: 654px) {
+  .form-container {
+    width: 100vw;
+    margin: 0;
+  }
+  .button {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 654px) {
+  .label {
+    font-size: 1.7rem;
+  }
+  .input {
+    font-size: 1.5rem;
+  }
+  .button {
+    font-size: 1.5rem;
+  }
+}
