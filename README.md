@@ -10,7 +10,7 @@
 - [License](#license)
 
 ## Description
-This repository contains the source code for Nathan's Flashcard App, a web application that allows users to create and study decks of flashcards. The app features a user-friendly interface for creating new decks and adding flashcards to them. Users can also study their decks in a quiz format, allowing them to test their knowledge and track their progress over time.
+This repository contains the source code for Nathan's Flashcard App, a web-based application that simplifies the creation and study of flashcard decks. The app's user-friendly interface allows users to create and study decks with ease.
 
 ## Technologies Used
 The flashcard app was created using the following technologies:
@@ -31,7 +31,7 @@ To run this app locally, follow these steps:
 4. Run the command `npm start` to start the development server.
 
 ## Usage
-To use the app, simply navigate to the deployed version [here](https://nathans-flashcard-app.netlify.app/). From there, you can addand study your flashcards using the quiz feature.
+To use the app, simply navigate to the deployed version [here](https://nathans-flashcard-app.netlify.app/). From there, you can generate new flashcard decks to study.
 
 ## Contributing
 If you'd like to contribute to this project, feel free to submit a pull request with your proposed changes. However, please keep in mind that this app is a personal project and may not be actively maintained.
